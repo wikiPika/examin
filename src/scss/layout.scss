@@ -1,7 +1,6 @@
 @import "./settings";
 
 .apex-layout {
-    height: 200vh;
     background-color: $background;
 
     position: relative;
@@ -12,9 +11,19 @@
     height: $navbar-height;
     background-color: $background;
     border-bottom: 1px solid black;
-    padding: 1rem 2rem;
 
     position: fixed;
+    z-index: 1000;
+
+    @media (max-width: 639px) {
+        padding: 0 0.25rem;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        padding: 0 0.5rem;
+    }
+    @media (min-width: 1280px) {
+        padding: 0 1rem;
+    }
 }
 
 .apex-nav-spacer {
