@@ -1,0 +1,22 @@
+@import "./settings";
+
+.apex-layout {
+    height: 200vh;
+    background-color: $background;
+
+    position: relative;
+}
+
+.apex-nav {
+    width: 100vw;
+    height: $navbar-height;
+    background-color: $background;
+    border-bottom: 1px solid black;
+    padding: 1rem 2rem;
+
+    position: fixed;
+}
+
+.apex-nav-spacer {
+    height: $navbar-height;
+}

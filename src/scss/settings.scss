@@ -1,0 +1,22 @@
+@import "~@fontsource/glory/400.css";
+@import "~@fontsource/glory/800.css";
+@import "~@fontsource/bitter/400.css";
+@import "~@fontsource/bitter/800.css";
+
+* {
+    font-family: "Bitter", sans-serif;
+}
+
+$lighterblue: #c4ddff;
+$lightblue: #7fb5ff;
+$blue: #2155cd;
+$darkblue: #333c83;
+
+$red: #f24a72;
+
+$pale: #ffffee;
+$white: #e8f9fd;
+
+$navbar-height: 8rem;
+
+$background: $pale;
