@@ -2,11 +2,15 @@ import React from "react";
 import "../../scss/layout.scss"
 import "../../scss/core.scss"
 import Button from "../generic/Button";
+import {useAuth} from "../AuthProvider";
 import {useNavigate} from "react-router-dom";
 
 export default function Navigation(props: {}) {
 
     const nav = useNavigate()
+
+    const auth = useAuth();
+    const authed = auth.isAuth();
 
     return <div className="apex-nav row-sc">
         <Button className="bold font-header h-100" onClick={() => nav("./")}>
@@ -17,8 +21,8 @@ export default function Navigation(props: {}) {
             <Button className="h-100" onClick={() => nav("./quiz")}>
                Quiz
             </Button>
-            <Button className="h-100" onClick={() => alert("oauth wip")}>
-                Login
+            <Button className="h-100" onClick={authed ? auth.signOut : auth.googleLogin}>
+                {authed ? "Logout" : "Login"}
             </Button>
         </div>
     </div>
