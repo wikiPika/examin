@@ -1,8 +1,6 @@
 import {Sky} from "three/examples/jsm/objects/Sky";
 import {Water} from "three/examples/jsm/objects/Water";
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import {
-    OffscreenCanvas,
     PerspectiveCamera,
     PlaneGeometry,
     PMREMGenerator,
@@ -27,12 +25,10 @@ export function renderOcean(canvas: HTMLCanvasElement | OffscreenCanvas, width: 
     sky = buildSky();
     sun = buildSun();
     water = buildWater();
-    setOrbitControls();
     animate();
 
     function buildScene() {
-        const scene = new Scene();
-        return scene;
+        return new Scene();
     }
 
     function buildCamera() {
@@ -46,7 +42,7 @@ export function renderOcean(canvas: HTMLCanvasElement | OffscreenCanvas, width: 
             canvas: canvas
         });
         renderer.setPixelRatio(dpr);
-        renderer.setSize(width, height);
+        renderer.setSize(width, height, false);
         return renderer;
     }
 
@@ -80,7 +76,7 @@ export function renderOcean(canvas: HTMLCanvasElement | OffscreenCanvas, width: 
             {
                 textureWidth: 512,
                 textureHeight: 512,
-                waterNormals: new TextureLoader().load('', function ( texture ) {
+                waterNormals: new TextureLoader().load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/waternormals.jpg', function ( texture ) {
                     texture.wrapS = texture.wrapT = RepeatWrapping;
                 }),
                 alpha: 1.0,
@@ -96,16 +92,6 @@ export function renderOcean(canvas: HTMLCanvasElement | OffscreenCanvas, width: 
         return water;
     }
 
-    function setOrbitControls() {
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.maxPolarAngle = Math.PI * 0.495;
-        controls.target.set(0, 10, 0);
-        controls.minDistance = 40.0;
-        controls.maxDistance = 200.0;
-        controls.update();
-        return controls;
-    }
-
     function animate() {
         requestAnimationFrame(animate);
 
@@ -116,7 +102,7 @@ export function renderOcean(canvas: HTMLCanvasElement | OffscreenCanvas, width: 
 }
 
 export function resize(width: number, height: number) {
-    if (!(scene && camera && renderer && sky && sun && water))
+    if(!(scene && camera && renderer && sky && sun && water))
         return;
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
