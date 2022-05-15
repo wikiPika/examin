@@ -8,6 +8,8 @@ import AuthProvider from "./components/AuthProvider";
 import {Quiz} from "./components/pages/Quiz";
 import ScreenProvider from "./components/layout/ScreenContext";
 
+// find more wikilabs stuffs
+// at https://wikilabs.dev
 function App() {
     return <BrowserRouter>
         <AuthProvider>

@@ -5,6 +5,8 @@ import {motion} from "framer-motion";
 const base = Anim.bounceY(50).spring(120, 0, 20).delay_children(0).stagger(0.02).build()
 const bounce = Anim.bounceY(10).build()
 
+// Fades in text, letter by letter.
+// Custom coded!
 export default function TextFade(props: {
     text: string,
     className?: string,

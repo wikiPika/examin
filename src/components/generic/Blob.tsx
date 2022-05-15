@@ -4,6 +4,7 @@ import "../../scss/generic.scss"
 import {motion} from "framer-motion";
 import {Anim} from "../../Animation";
 
+//Basic clickable badge.
 export default function Blob(props: {
     onClick?: () => void
     color?: string,

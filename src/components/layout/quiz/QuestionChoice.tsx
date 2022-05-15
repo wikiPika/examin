@@ -5,6 +5,7 @@ import {Anim, hexToRgb} from "../../../Animation";
 import iconTrash from "../../../img/trash-10-64.png";
 import {choicesAnim} from "./animations";
 
+// Quiz system -- single question choice tab
 export function QuestionChoice(props: {
     currentChoice: number,
     thisChoice: number,

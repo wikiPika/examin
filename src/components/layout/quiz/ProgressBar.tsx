@@ -1,6 +1,7 @@
 import {motion} from "framer-motion";
 import React from "react";
 
+// Generic progress bar
 export function ProgressBar(props: {
     prog: number
     color: string

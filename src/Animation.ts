@@ -1,3 +1,5 @@
+// Custom animations class built on top of framer-motion's variants framework.
+// Uses builder pattern for quick instantiation into objects to maximize reusage.
 export class Anim {
 
     inactive: any

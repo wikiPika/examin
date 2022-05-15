@@ -4,6 +4,7 @@ import React from "react";
 import {AnswerFeedback} from "./AnswerFeedback";
 import {choicesParent, slideAnim} from "./animations";
 
+// Quiz system -- feedback slide
 export function AnswerDisplay(props: {
     data: Question
     selected: number

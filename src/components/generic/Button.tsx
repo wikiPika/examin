@@ -3,6 +3,7 @@ import "../../scss/generic.scss";
 import "../../scss/core.scss";
 import {motion} from "framer-motion";
 
+// Basic clickable button.
 export default function Button(props: {
     onClick: any,
     children: any,

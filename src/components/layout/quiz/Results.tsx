@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {ProgressBar} from "./ProgressBar";
 
+// Quiz system -- end-of-session feedback
 export function Results(props: {
     answeredQuestions: QuestionResult[]
     onContinue: () => void

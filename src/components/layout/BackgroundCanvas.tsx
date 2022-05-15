@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {renderOcean, renderSpace, resize} from "../../core/render";
 import "../../scss/ocean.scss";
 
+// Renders three.js background if applicable
 export function BackgroundCanvas(props : {bg: number}) {
     const {bg} = props;
     const canvas = useRef<HTMLCanvasElement>(null);

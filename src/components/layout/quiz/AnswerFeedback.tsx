@@ -2,6 +2,7 @@ import {motion} from "framer-motion";
 import React from "react";
 import {choicesAnim} from "./animations";
 
+// Quiz system -- single answer feedback tab
 export function AnswerFeedback(props: {
     text: string,
     correct: boolean,

@@ -5,6 +5,7 @@ import {AnimatePresence} from "framer-motion";
 import Blob from "../../generic/Blob";
 import Dropdown from "../../generic/Dropdown";
 
+// Quiz system -- first page
 export function Init(props: {
     questions: Question[]
     curNumber: number

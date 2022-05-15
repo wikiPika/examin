@@ -11,6 +11,7 @@ type DropdownData = {
     className?: string
 }
 
+// Slightly less-than-basic dropdown.
 export default function Dropdown(props: {
     options: Array<DropdownData>,
     width: number, // in rem

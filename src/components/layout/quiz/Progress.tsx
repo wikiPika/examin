@@ -4,6 +4,7 @@ import {useScreen} from "../ScreenContext";
 import React, {useEffect} from "react";
 import {ProgressBar} from "./ProgressBar";
 
+// Quiz system - Bottom progress bar
 export function Progress(props: {
     answered: QuestionResult[],
     remaining: Question[]

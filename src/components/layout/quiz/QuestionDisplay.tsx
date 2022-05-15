@@ -6,6 +6,7 @@ import {Anim} from "../../../Animation";
 import {QuestionChoice} from "./QuestionChoice";
 import {choicesParent, slideAnim} from "./animations";
 
+// Quiz system -- displays one question
 export function QuestionDisplay(props: {
     data: Question
     onSubmit: (choice: number) => void

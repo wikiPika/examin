@@ -91,6 +91,9 @@
   }
 }
 
+.apex-home {
+  overflow: hidden;
+}
 .apex-home .body {
   background-color: #ffffee;
   cursor: default;
