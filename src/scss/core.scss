@@ -25,6 +25,10 @@
     flex-shrink: 0;
 }
 
+.f-wrap {
+    flex-wrap: wrap;
+}
+
 $justifyMap: (
         flex-start: "s",
         center: "c",
