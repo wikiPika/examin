@@ -95,6 +95,7 @@
         flex-grow: 1;
         border-left: 1px solid black;
         border-right: 1px solid black;
+        background: $background;
     }
 }
 
@@ -287,5 +288,19 @@
         padding-top: 4rem;
         cursor: pointer;
         user-select: none;
+    }
+}
+
+#bg-container {
+    position: relative;
+    min-height: calc(100vh - 4rem);
+    #bg-canvas {
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        opacity: 0.5;
+    }
+    .apex-quiz {
+        position: absolute;
     }
 }

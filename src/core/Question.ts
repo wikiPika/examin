@@ -6,7 +6,9 @@ export type Question = {
     skill: string,
     subject: string,
     topic: string,
-    unit: number,
-    year: number,
-    imgUrl: string
+    unit: string,
+    year: string,
+    imgUrl: string,
+    skillLong: string,
+    topicLong: string
 };

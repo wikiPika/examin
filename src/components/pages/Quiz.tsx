@@ -1,16 +1,20 @@
-import React, {useEffect, useLayoutEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../../scss/main.scss";
-import {getFirestore, collection, query, where, getDocs, doc, getDoc} from "firebase/firestore";
+import {getFirestore, collection, getDocs} from "firebase/firestore";
 import {firebaseApp} from "../../fb";
 import {Question} from "../../core/Question";
-import {useLocation, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {QuestionResult} from "../../core/QuestionResult";
 import {APClass} from "../../core/APClass";
-import {AnimatePresence, motion} from "framer-motion";
+import {AnimatePresence, AnimateSharedLayout, motion} from "framer-motion";
+import {readCache, writeCache} from "../../core/cacheHelpers";
 
 import iconTrash from "../../img/trash-10-64.png"
 import {Anim, hexToRgb} from "../../Animation";
 import {useScreen} from "../layout/ScreenContext";
+import {BackgroundCanvas} from "../layout/BackgroundCanvas";
+import Dropdown from "../generic/Dropdown";
+import Blob from "../generic/Blob";
 
 const db = getFirestore(firebaseApp);
 const QUESTIONS = "questions";
@@ -27,9 +31,10 @@ export function Quiz(props: {}) {
     const [questionQueue, setQuestionQueue] = useState<Question[]>([]);
     const [questionsAnswered, setQuestionsAnswered] = useState<QuestionResult[]>([]);
 
-    const [selectedAnswer, setSelectedAnswer] = useState(-1)
-    const [gameState, setGameState] = useState(0) // 1 = finished, 0 = going
-    const [resultsSnapshot, setResultsSnapshot] = useState()
+    const [selectedAnswer, setSelectedAnswer] = useState(-1);
+    const [numberOfQuestions, setNumberOfQuestions] = useState(0)
+    const [gameState, setGameState] = useState<0 | 1>(0); // 1 = finished, 0 = going
+    const [bg, setBg] = useState(0); //0 = plain, 1 = ocean, 2 = space
 
     //submit callback for mcq
     const onAnswer = (selectedIndex: number) => {
@@ -103,6 +108,17 @@ export function Quiz(props: {}) {
             return;
         }
 
+        const questions = readCache<Question[]>(className);
+        if(questions) {
+            setAllQuestions(questions.map(value => ({ value, sort: Math.random() }))
+                .sort((a, b) => a.sort - b.sort)
+                .map(({ value }) => value));
+            // shuffle go brrrrr
+            // injects random sort element and removes it later
+            setNumberOfQuestions(questions.length);
+            return;
+        }
+
         const path = QUESTIONS + "-" + className;
         const questionsRef = collection(db, path);
         getDocs(questionsRef)
@@ -122,30 +138,32 @@ export function Quiz(props: {}) {
             });
     }, [params.classId]);
 
-    return <div className="apex-quiz w-100 h-100 col-cc">
-        <div className="body container col-ct">
-            {
-                (!questionQueue.length && gameState === 0) && <Init />
-            }
-            {
-                (!!questionQueue.length && gameState === 0) &&
-                <div>
-                    <div className="f-grow" />
-                    {
-                        selectedAnswer === -1 && <QuestionDisplay key={questionQueue[0].prompt} data={questionQueue[0]} onSubmit={onAnswer}/>
-                    }
-                    {
-                        selectedAnswer !== -1 && <AnswerDisplay key="answer" data={questionQueue[0]} selected={selectedAnswer} onSubmit={onContinue} />
-                    }
-                    <div className="f-grow" />
-                    <Progress answered={questionsAnswered} remaining={questionQueue} onFinish={() => setGameState(1)} />
-                </div>
-            }
-            {
-                (!questionQueue.length && gameState === 1) && <div>
-                    results screen
-                </div>
-            }
+    return <div id="bg-container">
+        <BackgroundCanvas bg={bg}/>
+        <div className="apex-quiz w-100 h-100 col-sc">
+            <div className="body container">
+                {
+                    (!questionQueue.length && gameState === 0) && <Init bg={bg} setBg={setBg} onChange={onDropdownChange} curNumber={numberOfQuestions} questions={allQuestions} onSubmit={onDirection} />
+                }
+                {
+                    (!!questionQueue.length && gameState === 0) &&
+                    <div className="h-100 w-100 col-st">
+                        {
+                            selectedAnswer === -1 && <QuestionDisplay key={questionQueue[0].prompt} data={questionQueue[0]} onSubmit={onAnswer}/>
+                        }
+                        {
+                            selectedAnswer !== -1 && <AnswerDisplay key="answer" data={questionQueue[0]} selected={selectedAnswer} onSubmit={onContinue} />
+                        }
+                        <div className="f-grow" />
+                        <Progress total={numberOfQuestions == -1 ? allQuestions.length : numberOfQuestions} answered={questionsAnswered} remaining={questionQueue} onFinish={() => {}} />
+                    </div>
+                }
+                {
+                    (!questionQueue.length && gameState === 1) && <div>
+                        <Results answeredQuestions={questionsAnswered} onContinue={onResults} />
+                    </div>
+                }
+            </div>
         </div>
     </div>
 }
@@ -158,8 +176,8 @@ function Init(props: {
     bg: number,
     setBg: (bg: number) => void
 }) {
-
-    const screen = useScreen()
+    const {questions} = props;
+    const screen = useScreen();
 
     const [units, setUnits] = useState<Array<string>>([]);
     const [removedUnits, setRemovedUnits] = useState<Array<string>>([]);
@@ -509,6 +527,8 @@ function ProgressBar(props: {
 }
 
 //spaced repetition algo to swap question order for optimal learning
+//harder and more missed questions are sent to the front
+//this results in easier questions being simultaneously being pushed to the back
 function SpacedRepetition(questionResult: QuestionResult, queue: Question[]) {
     if(questionResult.result)
         return;
