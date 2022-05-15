@@ -17,6 +17,9 @@ Every React component on the page was hand-crafted with love and chocolates.
 ## Credits
 
 David Mun (Home page layout)
+
 Jackie Liu (Class page, Quiz page, theming, firebase integration)
+
 Tymur Arsentiev (Backend, firebase integration)
+
 Lawrence Zhang (Python/OCR for question pool)
