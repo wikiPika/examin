@@ -24,12 +24,8 @@ export default function Class(props: {}) {
         const classesRef = collection(db, COLLECTION_NAME);
         getDocs(classesRef)
             .then(result => {
-                const classes: APClass[] = result.docs.map(d => {
-                    const doc = d.data() as APClass;
-                    doc.id = d.id;
-                    return doc;
-                });
-                setClasses(classes);
+                const r: APClass[] = result.docs.map(d => d.data() as APClass);
+                setClasses(r);
             })
     }, []);
 

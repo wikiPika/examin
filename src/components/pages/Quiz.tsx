@@ -4,8 +4,6 @@ import {getFirestore, collection, query, where, getDocs, doc, getDoc} from "fire
 import {firebaseApp} from "../../fb";
 import {Question} from "../../core/Question";
 import {useLocation, useParams} from "react-router-dom";
-import "../../scss/quiz.scss";
-import {QuizForm} from "./QuizForm";
 import {QuestionResult} from "../../core/QuestionResult";
 import {APClass} from "../../core/APClass";
 import {AnimatePresence, motion} from "framer-motion";
@@ -16,13 +14,15 @@ import {useScreen} from "../layout/ScreenContext";
 
 const db = getFirestore(firebaseApp);
 const QUESTIONS = "questions";
-const CLASSES = "classes";
 
-const answerCharArray = ["A","B","C","D","E"];
+type Result = {
+    numberAnswered: number,
+    numberCorrect: number,
+    timeElapsed: number,
+}
 
 export function Quiz(props: {}) {
     const [allQuestions, setAllQuestions] = useState<Question[]>([]);
-    const [apClass, setAPClass] = useState<APClass | null>(null);
     const params = useParams();
     const [questionQueue, setQuestionQueue] = useState<Question[]>([]);
     const [questionsAnswered, setQuestionsAnswered] = useState<QuestionResult[]>([]);
@@ -32,16 +32,15 @@ export function Quiz(props: {}) {
     const [resultsSnapshot, setResultsSnapshot] = useState()
 
     //submit callback for mcq
-    const onSubmit = (input: string) => {
+    const onAnswer = (selectedIndex: number) => {
+        setSelectedAnswer(selectedIndex)
         const question = questionQueue[0];
-        const correctIndex = answerCharArray.indexOf(question.answer); //get index of correct answer
-        const answerArray = Array.from(Object.keys(question.answers)).sort();
-        const selectedIndex = answerArray.indexOf(input); //get index of selected answer
+        const correctIndex = question.answer; //get index of correct answer
 
         //append result to an array
         const result: QuestionResult = {
             question: questionQueue[0],
-            result: correctIndex == selectedIndex //is correct if the two indices match
+            result: correctIndex === selectedIndex //is correct if the two indices match
         };
 
         const answeredCopy = questionsAnswered.concat(result);
@@ -59,39 +58,27 @@ export function Quiz(props: {}) {
         setQuestionQueue(copy);
     }
 
-    //start by getting the class related to the id
-    //if the id does not exist or the class does not exist, the user should not be here
+    //then get all questions on a subject
     useEffect(() => {
-        const subjectId = params.classId;
-        if(!subjectId) {
+        const className = params.classId;
+        if(!className) {
             window.location.href = "/";
             return;
         }
-        const classesRef = collection(db, CLASSES);
-        const selectedDoc = doc(classesRef, subjectId);
-        getDoc(selectedDoc)
-            .then(r => {
-                if(!r.exists()) {
+
+        const path = QUESTIONS + "-" + className;
+        const questionsRef = collection(db, path);
+        getDocs(questionsRef)
+            .then(result => {
+                if(result.empty) {
                     window.location.href = "/";
                     return;
                 }
-                setAPClass(r.data() as APClass);
-            });
-    }, []);
-
-    //then get all questions on a subject
-    useEffect(() => {
-        if(!apClass)
-            return;
-        const questionsRef = collection(db, QUESTIONS);
-        const q = query(questionsRef, where("subject", "==", apClass.name));
-        getDocs(q)
-            .then(result => {
                 //serialize docs into state
                 const questions: Question[] = result.docs.map(d => d.data() as Question);
                 setAllQuestions(questions);
             });
-    }, [apClass]);
+    }, [params.classId]);
 
     //initially, set the question queue to the new questions
     useEffect(() => {
@@ -303,7 +290,7 @@ function SpacedRepetition(questionResult: QuestionResult, queue: Question[]) {
     const answered = questionResult.question;
     const filtered = queue.filter(q => q.skill == answered.skill //if skills match
         || q.unit == answered.unit //if units match
-        || q.topics.some(topic => answered.topics.includes(topic)) //if topics match
+        || q.topic == answered.topic //if topics match
     );
     if(!filtered.length) //if no more hard questions left, we simply move on
         return;
@@ -311,10 +298,10 @@ function SpacedRepetition(questionResult: QuestionResult, queue: Question[]) {
     //now we try to find the most relevant question to ask. Find a relevant question through correlation
     let moreFiltered: Question[] = filtered.filter(q => q.skill == answered.skill && q.unit == answered.unit);
     moreFiltered.push(...filtered.filter(q => q.skill == answered.skill
-        && q.topics.some(topic => answered.topics.includes(topic)))
+        && q.topic == answered.topic)
     );
     moreFiltered.push(...filtered.filter(q => q.unit == answered.unit
-        && q.topics.some(topic => answered.topics.includes(topic)))
+        && q.topic == answered.topic)
     );
 
 
@@ -324,7 +311,7 @@ function SpacedRepetition(questionResult: QuestionResult, queue: Question[]) {
     }
     else {
         let mostFiltered: Question[] = moreFiltered.filter(q => q.skill == answered.skill && q.unit == answered.unit
-        && q.topics.some(topic => answered.topics.includes(topic)));
+        && q.topic == answered.topic);
         if(!mostFiltered.length) {
             SwapWithBeginning(moreFiltered[0]); //if we found no super-relevant ones, still use more relevant questions
             return;

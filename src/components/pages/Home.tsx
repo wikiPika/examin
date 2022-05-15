@@ -1,7 +1,6 @@
 import React from "react";
 import "../../scss/main.scss"
 import "../../scss/core.scss"
-import {Ocean} from "../layout/Ocean";
 
 export default function Home(props: {}) {
     return <div className="apex-home w-100 col-cc">

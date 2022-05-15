@@ -1,11 +1,12 @@
 export type Question = {
-    answer: string,
+    prompt: string,
+    answer: number,
     answers: Map<string, string>,
     difficulty: number,
     skill: string,
     subject: string,
-    topics: string[],
+    topic: string,
     unit: number,
     year: number,
-    imageurl: string
+    imgUrl: string
 };
