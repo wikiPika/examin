@@ -1,11 +1,32 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../../scss/main.scss"
 import "../../scss/core.scss"
 import {motion} from "framer-motion";
 import {Anim} from "../../Animation";
 import {useNavigate} from "react-router-dom";
+import {APClass} from "../../core/APClass";
+import {getFirestore, query, getDocs, collection} from "firebase/firestore";
+import {firebaseApp} from "../../fb";
+
+const db = getFirestore(firebaseApp);
+const COLLECTION_NAME = "classes";
 
 export default function Class(props: {}) {
+    const [classes, setClasses] = useState<APClass[]>([]);
+
+    useEffect(() => {
+        const classesRef = collection(db, COLLECTION_NAME);
+        getDocs(classesRef)
+            .then(result => {
+                const classes: APClass[] = result.docs.map(d => {
+                    const doc = d.data() as APClass;
+                    doc.id = d.id;
+                    return doc;
+                });
+                setClasses(classes);
+            })
+    }, []);
+
     return <div className="apex-class w-100 col-cc">
         <div className="top w-100 row-cc">
             <div className="bold underline font-turboheader">
@@ -17,9 +38,11 @@ export default function Class(props: {}) {
             </div>
         </div>
         <div className="category f-wrap row-sc w-100">
-            <APCard color={"#0d865d"} name={"AP World History"} imgUrl={"https://media.istockphoto.com/photos/compass-on-a-old-navigation-map-globe-picture-id535463967?b=1&k=20&m=535463967&s=170667a&w=0&h=IqdemNebOmLQIBKdTQxEG7oBMgzE-KXmhiCE7XdUudc="} desc={"A whole lot about Champa rice."} url={"world"} />
-            <APCard color={"#49dcf9"} name="AP Physics 1" desc="Thanks to Newton, banging your head against a wall hurts." url="physics1" imgUrl="https://img1.goodfon.com/wallpaper/nbig/3/87/newton-s-cradle-physics-metal.jpg" />
-            <APCard color={"#de126e"} name="AP Physics 2" desc="More variables than you'll ever know what to do with." url="physics2" imgUrl="https://i.pinimg.com/736x/43/fa/02/43fa024243020049cf05fe439c00514d.jpg" />
+            {
+                classes.map(c =>
+                <APCard {...c} key={c.id} url={c.id}/>
+                )
+            }
         </div>
     </div>
 }
