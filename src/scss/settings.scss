@@ -17,6 +17,162 @@ $red: #f24a72;
 $pale: #ffffee;
 $white: #e8f9fd;
 
-$navbar-height: 8rem;
+$navbar-height: 4rem;
 
 $background: $pale;
+
+$width_large: 70rem;
+$width_medium: calc(5rem + 80%);
+$width_small: 90%;
+
+.container {
+    @media (max-width: 639px) {
+        width: $width_small;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        width: $width_medium;
+    }
+    @media (min-width: 1280px) {
+        width: $width_large;
+    }
+}
+
+.font-turboheader {
+    @media (max-width: 639px) {
+        font-size: 250%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 350%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 400%;
+    }
+}
+
+.font-header {
+    @media (max-width: 639px) {
+        font-size: 150%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 200%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 250%;
+    }
+}
+
+.font-subheader {
+    @media (max-width: 639px) {
+        font-size: 100%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 125%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 150%;
+    }
+}
+
+$width_large: 70rem;
+$width_medium: calc(5rem + 80%);
+$width_small: 90%;
+
+.container {
+    @media (max-width: 639px) {
+        width: $width_small;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        width: $width_medium;
+    }
+    @media (min-width: 1280px) {
+        width: $width_large;
+    }
+}
+
+.font-turboheader {
+    @media (max-width: 639px) {
+        font-size: 250%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 350%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 400%;
+    }
+}
+
+.font-header {
+    @media (max-width: 639px) {
+        font-size: 150%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 200%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 250%;
+    }
+}
+
+.font-subheader {
+    @media (max-width: 639px) {
+        font-size: 100%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 125%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 150%;
+    }
+}
+
+$width_large: 70rem;
+$width_medium: calc(5rem + 80%);
+$width_small: 90%;
+
+.container {
+    @media (max-width: 639px) {
+        width: $width_small;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        width: $width_medium;
+    }
+    @media (min-width: 1280px) {
+        width: $width_large;
+    }
+}
+
+.font-turboheader {
+    @media (max-width: 639px) {
+        font-size: 250%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 350%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 400%;
+    }
+}
+
+.font-header {
+    @media (max-width: 639px) {
+        font-size: 150%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 200%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 250%;
+    }
+}
+
+.font-subheader {
+    @media (max-width: 639px) {
+        font-size: 100%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 125%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 150%;
+    }
+}

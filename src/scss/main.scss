@@ -1,0 +1,180 @@
+@import "./settings";
+
+.apex-home {
+
+    .body {
+        background-color: $lighterblue;
+
+        .top {
+            background-color: red;
+            height: 50vh;
+        }
+
+        .blurb {
+            background-color: $darkblue;
+            height: 30vh;
+        }
+
+        .more {
+            background-color: green;
+            height: 50vh;
+        }
+    }
+}
+
+.apex-quiz {
+
+    .top {
+        margin: 3rem 0 2rem 0;
+        padding: 4rem 2rem;
+        background-color: $blue;
+        color: white;
+    }
+
+    .category {
+        padding: 0 1rem;
+    }
+}
+
+.apex-apcard {
+    margin: 1rem;
+    width: 32rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+    border-top-width: 0.5rem;
+    border-top-style: solid;
+
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+
+    .title {
+        padding: 1rem;
+        position: absolute;
+        top: 0;
+        background: rgb(255,255,255);
+        background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);
+
+        pointer-events: none;
+    }
+
+    .desc {
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);
+
+        pointer-events: none;
+    }
+
+    .main-selector {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 2rem;
+        width: 4rem;
+        text-align: center;
+        text-shadow: 0 0 0.5rem black;
+    }
+
+    img {
+        width: 100%;
+        height: 18rem;
+        object-fit: cover;
+    }
+}
+@import "./settings";
+
+.apex-home {
+
+    .body {
+        background-color: $lighterblue;
+
+        .top {
+            background-color: red;
+            height: 50vh;
+        }
+
+        .blurb {
+            background-color: $darkblue;
+            height: 30vh;
+        }
+
+        .more {
+            background-color: green;
+            height: 50vh;
+        }
+    }
+}
+
+.apex-quiz {
+
+    .top {
+        margin: 3rem 0 2rem 0;
+        padding: 4rem 2rem;
+        background-color: $blue;
+        color: white;
+    }
+
+    .category {
+        padding: 0 1rem;
+    }
+}
+
+.apex-apcard {
+    margin: 1rem;
+    width: 32rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    color: white;
+    border-top-width: 0.5rem;
+    border-top-style: solid;
+
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+
+    .title {
+        padding: 1rem;
+        position: absolute;
+        top: 0;
+        background: rgb(255,255,255);
+        background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);
+
+        pointer-events: none;
+    }
+
+    .desc {
+        padding: 1rem;
+        position: absolute;
+        bottom: 0;
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 100%);
+
+        pointer-events: none;
+    }
+
+    .main-selector {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 2rem;
+        width: 4rem;
+        text-align: center;
+        text-shadow: 0 0 0.5rem black;
+    }
+
+    img {
+        width: 100%;
+        height: 18rem;
+        object-fit: cover;
+    }
+}
