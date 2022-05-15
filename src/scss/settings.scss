@@ -72,3 +72,15 @@ $width_small: 90%;
         font-size: 150%;
     }
 }
+
+.font-miniheader {
+    @media (max-width: 639px) {
+        font-size: 90%;
+    }
+    @media (min-width: 640px) and (max-width: 1279px) {
+        font-size: 100%;
+    }
+    @media (min-width: 1280px) {
+        font-size: 100%;
+    }
+}

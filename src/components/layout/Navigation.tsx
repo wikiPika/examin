@@ -18,8 +18,8 @@ export default function Navigation(props: {}) {
         </Button>
         <div className="f-grow" />
         <div className="bold h-100 font-subheader row-cc">
-            <Button className="h-100" onClick={() => nav("./quiz")}>
-               Quiz
+            <Button className="h-100" onClick={() => nav("./class")}>
+                Classes
             </Button>
             <Button className="h-100" onClick={authed ? auth.signOut : auth.googleLogin}>
                 {authed ? "Logout" : "Login"}
