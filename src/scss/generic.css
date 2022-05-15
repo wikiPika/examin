@@ -1,0 +1,131 @@
+@import "~@fontsource/glory/400.css";
+@import "~@fontsource/glory/800.css";
+@import "~@fontsource/bitter/400.css";
+@import "~@fontsource/bitter/800.css";
+* {
+  font-family: "Bitter", sans-serif;
+}
+
+.blue {
+  color: #2155cd;
+}
+
+@media (max-width: 639px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .container {
+    width: calc(5rem + 80%);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    width: 70rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-turboheader {
+    font-size: 250%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-turboheader {
+    font-size: 350%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-turboheader {
+    font-size: 400%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-header {
+    font-size: 150%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-header {
+    font-size: 200%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-header {
+    font-size: 250%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-subheader {
+    font-size: 100%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-subheader {
+    font-size: 125%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-subheader {
+    font-size: 150%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-miniheader {
+    font-size: 90%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-miniheader {
+    font-size: 100%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-miniheader {
+    font-size: 100%;
+  }
+}
+
+.generic-button {
+  cursor: pointer;
+  padding: 0.125rem 1rem;
+  background-color: #ffffee;
+}
+
+.generic-dropdown {
+  position: relative;
+}
+.generic-dropdown > .dropdown-container {
+  position: absolute;
+  z-index: 12500;
+  color: black;
+  background-color: #ffffee;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.generic-dropdown > .dropdown-container .text {
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+.generic-dropdown > .main-container {
+  background-color: rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+.generic-dropdown > .main-container img {
+  margin-left: 0.5rem;
+}
+
+.generic-blob {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  color: white;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+/*# sourceMappingURL=generic.css.map */

@@ -1,0 +1,355 @@
+@import "~@fontsource/glory/400.css";
+@import "~@fontsource/glory/800.css";
+@import "~@fontsource/bitter/400.css";
+@import "~@fontsource/bitter/800.css";
+* {
+  font-family: "Bitter", sans-serif;
+}
+
+.blue {
+  color: #2155cd;
+}
+
+@media (max-width: 639px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .container {
+    width: calc(5rem + 80%);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    width: 70rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-turboheader {
+    font-size: 250%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-turboheader {
+    font-size: 350%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-turboheader {
+    font-size: 400%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-header {
+    font-size: 150%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-header {
+    font-size: 200%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-header {
+    font-size: 250%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-subheader {
+    font-size: 100%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-subheader {
+    font-size: 125%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-subheader {
+    font-size: 150%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-miniheader {
+    font-size: 90%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-miniheader {
+    font-size: 100%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-miniheader {
+    font-size: 100%;
+  }
+}
+
+.apex-home .body {
+  background-color: #c4ddff;
+}
+.apex-home .body .top {
+  background-color: red;
+  height: 50vh;
+}
+.apex-home .body .blurb {
+  background-color: #333c83;
+  height: 30vh;
+}
+.apex-home .body .more {
+  background-color: green;
+  height: 50vh;
+}
+
+.apex-class .top {
+  margin: 3rem 0 2rem 0;
+  padding: 4rem 2rem;
+  background-color: #2155cd;
+  color: white;
+}
+.apex-class .category {
+  padding: 0 1rem;
+}
+
+.apex-apcard {
+  margin: 1rem;
+  width: 32rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  color: white;
+  border-top-width: 0.5rem;
+  border-top-style: solid;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.apex-apcard .title {
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(0, 0, 0) 100%);
+  pointer-events: none;
+}
+.apex-apcard .desc {
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgb(0, 0, 0) 100%);
+  pointer-events: none;
+}
+.apex-apcard .main-selector {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 2rem;
+  width: 4rem;
+  text-align: center;
+  text-shadow: 0 0 0.5rem black;
+}
+.apex-apcard img {
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+}
+
+.apex-quiz {
+  overflow-y: scroll;
+}
+.apex-quiz .body {
+  flex-grow: 1;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background: #ffffee;
+}
+
+.quiz-progress {
+  border-radius: 0.5rem;
+  height: 1rem;
+  border: 1px solid black;
+  margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.quiz-progress .bar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  top: 0;
+  bottom: 0;
+  background-color: #2155cd;
+}
+
+.quiz-question .prompt {
+  position: relative;
+  user-select: none;
+}
+.quiz-question .prompt img {
+  border: 1px solid black;
+  background-color: white;
+  padding: 1rem;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: blur(0.25rem);
+}
+.quiz-question .prompt .text {
+  position: absolute;
+  color: white;
+  background-color: #2155cd;
+  padding: 1rem 10%;
+  text-align: center;
+}
+
+.quiz-choice {
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0.5rem 5%;
+  margin-top: 1rem;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  text-shadow: 0 0 0.25rem black;
+  font-weight: bold;
+  position: relative;
+}
+.quiz-choice .eliminate {
+  position: relative;
+  height: 2rem;
+  width: auto;
+  z-index: 50;
+  user-select: none;
+}
+
+.quiz-answer .heading {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding: 2rem 2rem;
+  color: white;
+  text-shadow: 0 0 0.125rem black;
+  cursor: pointer;
+}
+
+.quiz-feedback {
+  overflow: hidden;
+  padding: 1.25rem 5%;
+  margin-top: 1rem;
+  min-height: 4rem;
+  color: black;
+  background: rgba(0, 0, 0, 0.04);
+  position: relative;
+  border-top: 4px solid black;
+}
+
+.quiz-init > * {
+  margin-top: 4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.quiz-init > *:last-child {
+  margin-bottom: 4rem;
+}
+.quiz-init .header {
+  text-align: center;
+}
+@media (max-width: 639px) {
+  .quiz-init .header {
+    line-height: 2.5rem;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .quiz-init .header {
+    line-height: 3rem;
+    word-spacing: 1px;
+  }
+}
+@media (min-width: 1280px) {
+  .quiz-init .header {
+    line-height: 3.5rem;
+    word-spacing: 1px;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .quiz-init .directions {
+    line-height: 1.5rem;
+    word-spacing: 1px;
+  }
+}
+@media (min-width: 1280px) {
+  .quiz-init .directions {
+    line-height: 2rem;
+    word-spacing: 1px;
+  }
+}
+.quiz-init .settings {
+  border-top: 1px solid black;
+  padding-top: 3rem;
+}
+.quiz-init .settings > .columnar > *:not(:first-child) {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+.quiz-init .confirm {
+  cursor: pointer;
+}
+
+.quiz-results > * {
+  margin-top: 4rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.quiz-results > *:last-child {
+  margin-bottom: 4rem;
+}
+.quiz-results .banner {
+  color: white;
+  text-shadow: 0 0 0.25rem black;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.quiz-results .stat-bars {
+  padding: 0 10%;
+}
+.quiz-results .stat-bars > *:first-child {
+  margin-bottom: 1rem;
+}
+.quiz-results .stat-bars .stat-bar {
+  padding: 0 0.5rem;
+  margin-top: 1rem;
+}
+.quiz-results .stat-bars .stat-bar > *:first-child {
+  margin-bottom: 0.5rem;
+}
+.quiz-results .go-begin {
+  border-top: 1px solid black;
+  padding-top: 4rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+#bg-container {
+  position: relative;
+  min-height: calc(100vh - 4rem);
+}
+#bg-container #bg-canvas {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  opacity: 0.5;
+}
+#bg-container .apex-quiz {
+  position: absolute;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,126 @@
+@import "~@fontsource/glory/400.css";
+@import "~@fontsource/glory/800.css";
+@import "~@fontsource/bitter/400.css";
+@import "~@fontsource/bitter/800.css";
+* {
+  font-family: "Bitter", sans-serif;
+}
+
+.blue {
+  color: #2155cd;
+}
+
+@media (max-width: 639px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .container {
+    width: calc(5rem + 80%);
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    width: 70rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-turboheader {
+    font-size: 250%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-turboheader {
+    font-size: 350%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-turboheader {
+    font-size: 400%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-header {
+    font-size: 150%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-header {
+    font-size: 200%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-header {
+    font-size: 250%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-subheader {
+    font-size: 100%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-subheader {
+    font-size: 125%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-subheader {
+    font-size: 150%;
+  }
+}
+
+@media (max-width: 639px) {
+  .font-miniheader {
+    font-size: 90%;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .font-miniheader {
+    font-size: 100%;
+  }
+}
+@media (min-width: 1280px) {
+  .font-miniheader {
+    font-size: 100%;
+  }
+}
+
+.apex-layout {
+  background-color: #ffffee;
+  position: relative;
+}
+
+.apex-nav {
+  width: 100vw;
+  height: 4rem;
+  background-color: #ffffee;
+  border-bottom: 1px solid black;
+  position: fixed;
+  z-index: 1000;
+}
+@media (max-width: 639px) {
+  .apex-nav {
+    padding: 0 0.25rem;
+  }
+}
+@media (min-width: 640px) and (max-width: 1279px) {
+  .apex-nav {
+    padding: 0 0.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .apex-nav {
+    padding: 0 1rem;
+  }
+}
+
+.apex-nav-spacer {
+  height: 4rem;
+}
+
+/*# sourceMappingURL=layout.css.map */
