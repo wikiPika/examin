@@ -6,19 +6,22 @@ import Class from "./components/pages/Class";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import AuthProvider from "./components/AuthProvider";
 import {Quiz} from "./components/pages/Quiz";
+import ScreenProvider from "./components/layout/ScreenContext";
 
 function App() {
     return <BrowserRouter>
         <AuthProvider>
-            <Layout>
-                <Routes>
-                    <Route path="/" element={<Home />}/>
+            <ScreenProvider>
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<Home />}/>
 
-                    <Route path="/class" element={<Class />} />
+                        <Route path="/class" element={<Class />} />
 
-                    <Route path="/class/:classId" element={<Quiz />} />
-                </Routes>
-            </Layout>
+                        <Route path="/class/:classId" element={<Quiz />} />
+                    </Routes>
+                </Layout>
+            </ScreenProvider>
         </AuthProvider>
     </BrowserRouter>
 }

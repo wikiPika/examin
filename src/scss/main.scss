@@ -90,14 +90,17 @@
 }
 
 .apex-quiz {
+    overflow: hidden;
     .body {
-        height: calc(100vh - 4rem);
+        min-height: calc(100vh - 4rem);
+        border-left: 1px solid black;
+        border-right: 1px solid black;
     }
 }
 
 .quiz-progress {
     border-radius: 0.5rem;
-    height: 2rem;
+    height: 1rem;
     border: 1px solid black;
     margin-bottom: 0.5rem;
 
@@ -111,5 +114,85 @@
         top: 0;
         bottom: 0;
         background-color: $blue;
+    }
+}
+
+.quiz-question {
+    .prompt {
+
+        position: relative;
+        user-select: none;
+
+        img {
+            border: 1px solid black;
+            background-color: white;
+            padding: 1rem;
+            height: 100%;
+            width: auto;
+            margin-bottom: 0.5rem;
+            filter: blur(0.25rem);
+        }
+
+        .text {
+            position: absolute;
+            color: white;
+            background-color: $blue;
+            padding: 1rem 10%;
+            text-align: center;
+        }
+    }
+}
+
+.quiz-choice {
+    cursor: pointer;
+    padding: 0.5rem 5%;
+    margin-top: 1rem;
+    height: 4rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-shadow: 0 0 0.25rem black;
+    font-weight: bold;
+    position: relative;
+
+    .eliminate {
+        position: relative;
+        height: 2rem;
+        width: auto;
+        z-index: 50;
+    }
+}
+
+.quiz-answer {
+    .heading {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+        padding: 2rem 2rem;
+        color: white;
+        text-shadow: 0 0 0.125rem black;
+
+        cursor: pointer;
+    }
+}
+
+.quiz-feedback {
+    padding: 1.25rem 5%;
+    margin-top: 1rem;
+    min-height: 4rem;
+    color: black;
+    background: rgba(0, 0, 0, 0.04);
+    position: relative;
+    border-top: 4px solid black;
+}
+
+.quiz-init {
+    .header {
+        padding: 3rem;
+        text-align: center;
+        line-height: 2.5rem;
+        word-spacing: 0.125rem;
+    }
+    .directions {
+        padding: 0 1rem;
+        line-height: 1.5rem;
     }
 }

@@ -7,12 +7,13 @@
     font-family: "Bitter", sans-serif;
 }
 
+
 $lighterblue: #c4ddff;
 $lightblue: #7fb5ff;
 $blue: #2155cd;
 $darkblue: #333c83;
 
-$red: #f24a72;
+$red: #a22a22;
 
 $pale: #ffffee;
 $white: #e8f9fd;
@@ -24,6 +25,10 @@ $background: $pale;
 $width_large: 70rem;
 $width_medium: calc(5rem + 80%);
 $width_small: 90%;
+
+.blue {
+    color: $blue;
+}
 
 .container {
     @media (max-width: 639px) {

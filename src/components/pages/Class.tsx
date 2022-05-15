@@ -7,9 +7,15 @@ import {useNavigate} from "react-router-dom";
 import {APClass} from "../../core/APClass";
 import {getFirestore, query, getDocs, collection} from "firebase/firestore";
 import {firebaseApp} from "../../fb";
+import {useScreen} from "../layout/ScreenContext";
 
 const db = getFirestore(firebaseApp);
 const COLLECTION_NAME = "classes";
+
+const mainSelectorAnim = Anim.bounceY(10).default().build();
+
+const cardParent = new Anim().spring(120, 0, 20).delay_children(0.1).stagger(0.1).build()
+const cardAnim = Anim.point([-5, 10]).build(false)
 
 export default function Class(props: {}) {
     const [classes, setClasses] = useState<APClass[]>([]);
@@ -37,17 +43,18 @@ export default function Class(props: {}) {
                 Master the AP© Curriculum with our proprietary spaced repetition algorithm.
             </div>
         </div>
-        <div className="category f-wrap row-sc w-100">
-            {
-                classes.map(c =>
-                <APCard {...c} key={c.id} url={c.id}/>
-                )
-            }
-        </div>
+        {
+            classes.length > 0 &&
+            <motion.div variants={cardParent} initial="inactive" animate={"active"} className="category f-wrap row-sc w-100">
+                {
+                     classes.map((c, i) =>
+                        <APCard {...c} key={c.shortName} url={c.shortName} variants={cardAnim}/>
+                    )
+                }
+            </motion.div>
+        }
     </div>
 }
-
-const mainSelectorAnim = Anim.bounceY(10).default().build();
 
 function APCard(props: {
     name: string,
@@ -55,15 +62,28 @@ function APCard(props: {
     desc: string,
     url: string,
     color: string,
+    key: string,
+    variants: any,
 }) {
     const nav = useNavigate();
     const [hovering, setHovering] = useState(false);
+    const screen = useScreen()
 
-    return <div className="apex-apcard col-ss" onClick={() => nav(`./${props.url}`)} style={{borderTopColor: props.color}} onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
+    return <motion.div key={props.key} variants={props.variants} className="apex-apcard col-ss" onClick={() =>
+    {
+        nav(`./${props.url}`)
+        screen.setAPClass({
+            name: props.name,
+            imgUrl: props.imgUrl,
+            desc: props.desc,
+            color: props.color,
+            shortName: props.name,
+        })
+    }} style={{borderTopColor: props.color}} onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
         <motion.div className="title w-100 bold font-subheader" animate={hovering ? {height: "120px"} : {}}>
             {props.name}
         </motion.div>
-        <img src={props.imgUrl}/>
+        <img src={props.imgUrl} />
         <motion.div className="desc w-100 col-es" animate={hovering ? {height: "120px"} : {}}>
             {props.desc}
         </motion.div>
@@ -76,5 +96,5 @@ function APCard(props: {
                 Start
             </motion.div>
         }
-    </div>
+    </motion.div>
 }

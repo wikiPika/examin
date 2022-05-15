@@ -57,9 +57,9 @@ export class Anim {
 
     // clear transitions if child in staggered animation
     // transition inherited from parent
-    build(transitions = true) {
-        if (transitions) this.inactive["transition"] = this.active["transition"]
-        else {
+    build(transitions = true, reverse = false) {
+        if (transitions && reverse) this.inactive["transition"] = this.active["transition"]
+        else if (!transitions) {
             delete this.inactive["transition"]
             delete this.active["transition"]
         }
