@@ -76,7 +76,7 @@ export function Results(props: {
                 Topic Breakdown
             </div>
             {
-                topics && Array.from(topics.entries()).map((topicData, i) => {
+                topics && Array.from(topics.entries()).sort().map((topicData, i) => {
                     const [topic, longTopic] = topicData;
                     const total = props.answeredQuestions.filter(q => q.question.topic == topic);
                     const part = total.filter(q => q.result);
