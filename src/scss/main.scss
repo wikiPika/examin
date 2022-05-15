@@ -1,23 +1,144 @@
 @import "./settings";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
 .apex-home {
 
     .body {
-        background-color: $lighterblue;
+        background-color: #ffffee;
+        cursor: default;
 
-        .top {
-            background-color: red;
-            height: 50vh;
+        .hero {
+            height: 95vh;
+            background-image: url("../img/hero-background.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center 100%;
+            .right {
+                height: 100%;
+                width: 100%;
+
+                .right-span {
+                    color: #ffffee;
+                    width: 500px;
+                    margin-right: 50px;
+
+                    h1 {
+                        font-size: 70px;
+                        line-height: 50%;
+                        font-family: 'Manrope', sans-serif;
+                        font-weight: 800;
+                        margin-bottom: 30px;
+                    }
+                    p {
+                        font-size: 17px;
+                        font-family: 'Manrope', sans-serif;
+                        font-weight: 500;
+                        margin-bottom: 40px;
+                    }
+                    a {
+                        width: 200px;
+                        height: 50px;
+                        background-color: rgb(1, 58, 102);
+                        font-family: 'Manrope', sans-serif;
+                        font-weight: 800;
+                        border-radius: 50px;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .left {
+                height: 100%;
+                width: 100%;
+
+                .left-span {
+                    background-color: #ffffee;
+                    color: rgb(1, 58, 102);
+                    height: 400px;
+                    width: 600px;
+                    border-radius: 15px;
+                    font-size: 30px;
+                    font-weight: 800;
+                    padding: 20px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
         }
-
-        .blurb {
-            background-color: $darkblue;
+        .courses {
             height: 30vh;
+
+            .text {
+                color: rgb(1, 58, 102);
+            }
+
+            .main {
+                
+                .part {
+                    background-color: #00578c;
+                    color: #ffffee;
+                    width: 500px;
+                    height: 100px;
+                    border: 1px solid rgba(104, 104, 104, 0.137);
+                    border-radius: 10px;
+                    margin: 20px;
+                    font-family: 'Manrope', sans-serif;
+                    font-weight: 800;
+                    font-size: 20px;
+                    cursor: default;
+                }
+            }
         }
 
-        .more {
-            background-color: green;
-            height: 50vh;
+        .infograph {
+            height: 100vh;
+            background: rgb(255,255,238);
+            background: linear-gradient(180deg, rgba(255,255,238,1) 0%, rgba(0,87,140,1) 100%);
+            
+            .infograph-div {
+                background-image: url("../img/background.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                border-radius: 20px;
+        
+                .info-text {
+                    height: 20%;
+                    width: 1000px;
+
+                    .text-span {
+                        color: #ffffee;
+                        width: 70%;
+                        text-align: center;
+
+                        h1 {
+                            font-size: 50px;
+                            font-weight: 800;
+                            margin-top: 100px;
+                            text-shadow: 0 5px 3px rgba(86, 86, 86, 0.334);
+                        }
+                        p {
+                            font-size: 17px;
+                            font-family: 'Manrope', sans-serif;
+                            font-weight: 500;
+                        }
+                    }
+                }
+                .info-img {
+                    height: 80%;
+
+                    img {
+                        margin-top: 100px;
+                        height: 70%;
+                        background-color: white;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+        .done {
+            height: 10vh;
+            background-color: #00578c;
         }
     }
 }
