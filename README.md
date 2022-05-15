@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You've seen these projects before (I hope).
+
+Run `npm i` and then `npm start`.
 
 ## Specifics
 
