@@ -6,3 +6,39 @@
 
     background-color: $background;
 }
+
+.generic-dropdown {
+    position: relative;
+
+    > .dropdown-container {
+        position: absolute;
+        z-index: 12500;
+        color: black;
+
+        background-color: $pale;
+        padding: 0.5rem;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+
+        .text {
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+        }
+    }
+
+    > .main-container {
+        background-color: rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        img {
+            margin-left: 0.5rem;
+        }
+    }
+}
+
+.generic-blob {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}

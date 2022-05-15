@@ -44,7 +44,7 @@ export default function Class(props: {}) {
             <motion.div variants={cardParent} initial="inactive" animate={"active"} className="category f-wrap row-sc w-100">
                 {
                      classes.map((c, i) =>
-                        <APCard {...c} key={c.shortName} url={c.shortName} variants={cardAnim}/>
+                        <APCard name={c.name} color={c.color} desc={c.desc} imgUrl={c.imgUrl} key={`${i}`} url={c.shortName} variants={cardAnim}/>
                     )
                 }
             </motion.div>
@@ -58,14 +58,13 @@ function APCard(props: {
     desc: string,
     url: string,
     color: string,
-    key: string,
     variants: any,
 }) {
     const nav = useNavigate();
     const [hovering, setHovering] = useState(false);
     const screen = useScreen()
 
-    return <motion.div key={props.key} variants={props.variants} className="apex-apcard col-ss" onClick={() =>
+    return <motion.div variants={props.variants} className="apex-apcard col-ss" onClick={() =>
     {
         nav(`./${props.url}`)
         screen.setAPClass({

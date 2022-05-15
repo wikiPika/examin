@@ -90,9 +90,9 @@
 }
 
 .apex-quiz {
-    overflow: hidden;
+    overflow-y: scroll;
     .body {
-        min-height: calc(100vh - 4rem);
+        flex-grow: 1;
         border-left: 1px solid black;
         border-right: 1px solid black;
     }
@@ -127,8 +127,9 @@
             border: 1px solid black;
             background-color: white;
             padding: 1rem;
-            height: 100%;
+            height: auto;
             width: auto;
+            object-fit: contain;
             margin-bottom: 0.5rem;
             filter: blur(0.25rem);
         }
@@ -144,6 +145,7 @@
 }
 
 .quiz-choice {
+    overflow: hidden;
     cursor: pointer;
     padding: 0.5rem 5%;
     margin-top: 1rem;
@@ -159,6 +161,7 @@
         height: 2rem;
         width: auto;
         z-index: 50;
+        user-select: none;
     }
 }
 
@@ -175,6 +178,7 @@
 }
 
 .quiz-feedback {
+    overflow: hidden;
     padding: 1.25rem 5%;
     margin-top: 1rem;
     min-height: 4rem;
@@ -185,14 +189,103 @@
 }
 
 .quiz-init {
-    .header {
-        padding: 3rem;
-        text-align: center;
-        line-height: 2.5rem;
-        word-spacing: 0.125rem;
+
+    > * {
+        margin-top: 4rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
+
+    > *:last-child {
+        margin-bottom: 4rem;
+    }
+
+    .header {
+        text-align: center;
+        @media (max-width: 639px) {
+            line-height: 2.5rem;
+        }
+        @media (min-width: 640px) and (max-width: 1279px) {
+            line-height: 3rem;
+            word-spacing: 1px;
+        }
+        @media (min-width: 1280px) {
+            line-height: 3.5rem;
+            word-spacing: 1px;
+        }
+    }
+
     .directions {
-        padding: 0 1rem;
-        line-height: 1.5rem;
+        @media (max-width: 639px) {
+
+        }
+        @media (min-width: 640px) and (max-width: 1279px) {
+            line-height: 1.5rem;
+            word-spacing: 1px;
+        }
+        @media (min-width: 1280px) {
+            line-height: 2rem;
+            word-spacing: 1px;
+        }
+    }
+
+    .settings {
+
+        border-top: 1px solid black;
+
+        padding-top: 3rem;
+
+        > .columnar > *:not(:first-child) {
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+    }
+
+    .confirm {
+        cursor: pointer;
+    }
+}
+
+.quiz-results {
+    > * {
+        margin-top: 4rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    > *:last-child {
+        margin-bottom: 4rem;
+    }
+
+    .banner {
+        color: white;
+        text-shadow: 0 0 0.25rem black;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .stat-bars {
+
+        padding: 0 10%;
+
+        > *:first-child {
+            margin-bottom: 1rem;
+        }
+
+        .stat-bar {
+            padding: 0 0.5rem;
+            margin-top: 1rem;
+
+            > *:first-child {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+    .go-begin {
+        border-top: 1px solid black;
+        padding-top: 4rem;
+        cursor: pointer;
+        user-select: none;
     }
 }

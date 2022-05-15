@@ -70,6 +70,16 @@ export class Anim {
         return r
     }
 
+    static getSpring(stiffness = 120, delay = 0, damping = 20, mass = 1) {
+        return {
+            type: "spring",
+            stiffness: stiffness,
+            delay: delay,
+            damping: damping,
+            mass: mass,
+        }
+    }
+
     static opacity(duration: number): Anim {
         return new Anim({
             opacity: 0,
@@ -135,4 +145,11 @@ export class Anim {
             opacity: 1,
         })
     }
+}
+
+export function hexToRgb(hex: string) {
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex) ?? "";
+    return parseInt(result[1], 16) + "," +
+        parseInt(result[2], 16) + "," +
+        parseInt(result[3], 16) + ","
 }
