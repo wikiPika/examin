@@ -1,13 +1,18 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import "../../scss/main.scss"
 import "../../scss/core.scss"
-import {Ocean} from "../layout/Ocean";
 import infograph from "../../img/diagram.png";
+import {useAuth} from "../AuthProvider";
+import TextFade from "../generic/TextFade";
 
 export default function Home(props: {}) {
-    const reviews = ['"It was absolutely great for my AP Language Exam. ExamIn let me focus on what I was getting wrong rather than what I was getting right."', '"I love being able to study just the concepts that I need to know. I don\'t have to go through the hastle of relearning things I am confident in."', '"An absolte 5 star website that helped me excel in all my tests."', '"If you want a place to learn, this is the go to place."', '"Learning has never been easier and quicker. I am able to bang out all my learning in a matter of a couple hours."', '"This is a genius idea that has helped me tremendously with my studying."'];
-    var review = 0;
+    const auth = useAuth()
+
+    const reviews = ['"It was absolutely great for my AP Language Exam. ExamIn let me focus on what I was getting wrong rather than what I was getting right."', '"I love being able to study just the concepts that I need to know. I don\'t have to go through the hassle of relearning things I am confident in."', '"An absolute 5 star website that helped me excel in all my tests."', '"If you want a place to learn, this is the go to place."', '"Learning has never been easier and quicker. I am able to bang out all my learning in a matter of a couple hours."', '"This is a genius idea that has helped me tremendously with my studying."'];
+
+    const [currentReview, setCurrentReview] = useState(0)
+
     const changeRowPos = () => {
         var one = document.getElementById("mainOne") as HTMLInputElement;
         var two = document.getElementById("mainTwo") as HTMLInputElement;
@@ -22,14 +27,20 @@ export default function Home(props: {}) {
     };
 
     const changeText = () => {
-        var div = document.getElementById("click-div") as HTMLInputElement;
-        div.textContent = reviews[review];
-        console.log(review);
-        review++;
-        if (review == reviews.length) {
-            review = 0;
+        setCurrentReview(currentReview + 1)
+        if (currentReview > reviews.length) {
+            setCurrentReview(0)
         }
     };
+
+    useEffect(() => {
+        let interval = setInterval(() => {
+            changeText()
+        }, 5000)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
 
     window.addEventListener("scroll", changeRowPos);
 
@@ -39,25 +50,30 @@ export default function Home(props: {}) {
                 <div id="hero" className="hero w-100 row-cc">
                     <div className="right w-50 col-ce">
                         <div className="right-span">
-                            <h1>Improve Your</h1> 
+                            <h1>Improve Your</h1>
                             <h1>Test Scores</h1>
                             <p>Use the power of machine learning to create a course specially designed for your needs.</p>
                             <motion.a
                                 whileHover={{ scale: 1.2 }}
                                 whileTap={{ scale: 0.8 }}
+                                onClick={auth.googleLogin}
                                 className="col-cc">
                                     Sign Up
                             </motion.a>
                         </div>
                     </div>
                     <div className="left w-50 col-cs">
-                        <motion.div 
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.8 }}
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.85 }}
                             className="left-span col-cc"
                             id="click-div"
                             onClick={() => changeText()}>
-                                Click To Read Our Reviews!
+                            {
+                                reviews.map((v, i) => {
+                                    return currentReview == i && <TextFade text={v} />
+                                })
+                            }
                         </motion.div>
                     </div>
                 </div>
@@ -70,16 +86,24 @@ export default function Home(props: {}) {
                         <div className="part col-cc">AP Calculus AB/BC</div>
                         <div className="part col-cc">AP Statistics</div>
                         <div className="part col-cc">AP Macroeconomics</div>
+                        <div className="part col-cc">AP Physics 1</div>
+                        <div className="part col-cc">AP Physics 2</div>
+                        <div className="part col-cc">AP Microeconomics</div>
+                        <div className="part col-cc">AP Human Geography</div>
                     </div>
                     <div id="mainTwo" className="main w-110 row-sc overflow-hidden">
                         <div className="part col-cc">AP Language and Composition</div>
                         <div className="part col-cc">AP Literature and Composition</div>
                         <div className="part col-cc">AP European History</div>
-                        <div className="part col-cc">AP Spanish Language and Composition</div>
+                        <div className="part col-cc">AP Spanish Language</div>
+                        <div className="part col-cc">AP Psychology</div>
+                        <div className="part col-cc">AP Government</div>
+                        <div className="part col-cc">AP World History</div>
+                        <div className="part col-cc">AP Japanese</div>
                     </div>
                 </div>
                 <div className="infograph w-100 col-cc">
-                    <div className="infograph-div w-80 col-cc">
+                    <div className="infograph-div w-70 col-cc">
                         <motion.div className="info-text row-cc">
                             <div className="text-span">
                                 <h1>Advanced Learning Systems</h1>

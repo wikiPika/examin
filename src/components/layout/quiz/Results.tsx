@@ -46,7 +46,6 @@ export function Results(props: {
             {
                 units && units.map((v, i) => {
                     let total = props.answeredQuestions.filter(q => Number.parseInt(q.question.unit) == Number.parseInt(v.at(-1) ?? ""))
-                    console.log(props.answeredQuestions)
                     let part = total.filter(q => q.result)
 
                     return <div key={i} className="stat-bar w-100 col-ss font-subheader">
@@ -56,13 +55,13 @@ export function Results(props: {
                             </div>
                             <div>
                                 {
-                                    isNaN(part.length/total.length) ? "Error, this unit shouldn't be here" :
-                                        part.length/total.length == 0 ? "Yeowch, what happened?" :
-                                            part.length/total.length < 0.4 ? "That could've been better..." :
-                                                part.length/total.length < 0.6 ? "Just acceptable." :
-                                                    part.length/total.length < 0.8 ? "Not bad! Keep it up." :
-                                                        part.length/total.length < 1 ? "Fantastic! Great results." :
-                                                            "Incredible! How'd you do it?"
+                                    isNaN(part.length/total.length) ? "Error" :
+                                        part.length/total.length == 0 ? "Rough." :
+                                            part.length/total.length < 0.4 ? "Not your best" :
+                                                part.length/total.length < 0.6 ? "Good." :
+                                                    part.length/total.length < 0.8 ? "Great!" :
+                                                        part.length/total.length < 1 ? "Fantastic!!" :
+                                                            "Incredible!!!"
                                 }
                             </div>
                         </div>
@@ -84,17 +83,22 @@ export function Results(props: {
                     return <div key={i} className="stat-bar w-100 col-ss font-subheader">
                         <div className="row-bc w-100">
                             <div>
-                                <span className="bold underline">{longTopic.slice(0,-1)}:</span> {(100 * (isNaN(part.length/total.length) ? 0 : part.length / total.length)).toFixed(0)}% ({part.length}/{total.length})
+                                <div
+                                    className="bold underline">{longTopic.slice(19,-1)}:
+                                </div>
+                                <div>
+                                    {(100 * (isNaN(part.length/total.length) ? 0 : part.length / total.length)).toFixed(0)}% ({part.length}/{total.length})
+                                </div>
                             </div>
-                            <div>
+                            <div className="w-30 row-ec">
                                 {
-                                    isNaN(part.length/total.length) ? "Error, this unit shouldn't be here" :
-                                        part.length/total.length == 0 ? "Yeowch, what happened?" :
-                                            part.length/total.length < 0.4 ? "That could've been better..." :
-                                                part.length/total.length < 0.6 ? "Just acceptable." :
-                                                    part.length/total.length < 0.8 ? "Not bad! Keep it up." :
-                                                        part.length/total.length < 1 ? "Fantastic! Great results." :
-                                                            "Incredible! How'd you do it?"
+                                    isNaN(part.length/total.length) ? "Error" :
+                                        part.length/total.length == 0 ? "Rough." :
+                                            part.length/total.length < 0.4 ? "Not your best" :
+                                                part.length/total.length < 0.6 ? "Good." :
+                                                    part.length/total.length < 0.8 ? "Great!" :
+                                                        part.length/total.length < 1 ? "Fantastic!!" :
+                                                            "Incredible!!!"
                                 }
                             </div>
                         </div>
